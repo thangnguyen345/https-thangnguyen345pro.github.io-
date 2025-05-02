@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính Tiền Cho Khách</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Thêm CDN cho thư viện SheetJS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.1/xlsx.full.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Tính Tiền Cho Khách</h1>
+
+        <!-- Thông tin khách hàng -->
+        <div class="customer-info">
+            <h2>Thông Tin Khách Hàng</h2>
+
+            <div class="input-group">
+                <label for="customerName">Tên khách hàng:</label>
+                <input type="text" id="customerName" placeholder="Nhập tên khách hàng">
+            </div>
+
+            <div class="input-group">
+                <label for="customerPhone">Số điện thoại:</label>
+                <input type="tel" id="customerPhone" placeholder="Nhập số điện thoại">
+            </div>
+
+            <div class="input-group">
+                <label for="customerAddress">Địa chỉ:</label>
+                <input type="text" id="customerAddress" placeholder="Nhập địa chỉ">
+            </div>
+
+            <button class="button" onclick="addCustomer()">Thêm Khách Hàng</button>
+        </div>
+
+        <!-- Nút lưu Excel cho thông tin khách hàng và sản phẩm -->
+        <div style="text-align: center; margin-top: 20px;">
+            <button class="button" onclick="saveAllToExcel()">Lưu Tất Cả Vào Excel</button>
+        </div>
+
+        <!-- Các ô nhập sản phẩm -->
+        <div class="input-group">
+            <label for="productName">Tên sản phẩm:</label>
+            <input type="text" id="productName" placeholder="Nhập tên sản phẩm">
+        </div>
+
+        <div class="input-group">
+            <label for="productPrice">Giá:</label>
+            <input type="number" id="productPrice" placeholder="Nhập giá sản phẩm" step="any">
+        </div>
+
+        <div class="input-group">
+            <label for="productQuantity">Số lượng:</label>
+            <input type="number" id="productQuantity" placeholder="Nhập số lượng" min="1">
+        </div>
+
+        <div style="text-align: center; margin-top: 20px;">
+            <button class="button" onclick="addProduct()">Thêm sản phẩm</button>
+        </div>
+
+        <!-- Bảng sản phẩm -->
+        <h2>Danh Sách Sản Phẩm</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Tên Sản Phẩm</th>
+                    <th>Giá</th>
+                    <th>Số Lượng</th>
+                    <th>Tổng Tiền</th>
+                    <th>Hành Động</th>
+                </tr>
+            </thead>
+            <tbody id="productTable">
+                <!-- Các dòng sản phẩm sẽ được thêm vào tại đây -->
+            </tbody>
+        </table>
+
+        <div class="total">
+            Tổng tiền: <span id="finalTotal">0</span> VNĐ
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
